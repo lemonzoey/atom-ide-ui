@@ -418,9 +418,11 @@ function renderItem(
     let offset = 0;
     r.push(
       ...outline.tokenizedText.map((token, i) => {
-        const toReturn = renderTextToken(token, i, searchResult, offset);
-        offset += token.value.length;
-        return toReturn;
+        if(token.lenght != undefined){
+          const toReturn = renderTextToken(token, i, searchResult, offset);
+          offset += token.value.length;
+          return toReturn;
+        }
       }),
     );
   } else if (outline.plainText != null) {
